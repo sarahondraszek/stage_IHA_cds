@@ -1,1 +1,1 @@
-# stage_IHA_cds
+# Repository of code and data created during my internship at the IHA/DHI Paris.
