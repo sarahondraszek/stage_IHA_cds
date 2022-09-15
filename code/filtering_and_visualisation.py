@@ -1,18 +1,32 @@
+import os.path
+
 import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
 import random
-from merge_spreadsheets import merge_files
+import openpyxl
 
-PATH: str = '../data/cds_sheets/*'
+from ipynb.fs.full.merge_spreadsheets import merge_files
+
+PATH_ORIGINAL_INPUT: str = '../data/cds_sheets/*'
+PATH_MERGED_SPREADSHEET: str = '../data/merged_data/merged_cds_spreadsheet.csv'
 CDS_GND: str = 'http://d-nb.info/gnd/116765968'
-DATA = merge_files(PATH)
+
+
+
 FILTER_QUERIES: dict = {'gnd_sender': 'GND (Verfasser)',
                         'reference': 'Verweise',
                         'template': 'Vorlage',
                         'decade': 'decade',
                         'addressee': 'Empfänger'
                         }
+
+if not os.path.isfile(PATH_MERGED_SPREADSHEET):
+    DATA = merge_files(PATH_ORIGINAL_INPUT)
+else:
+    DATA = pd.read_csv(PATH_MERGED_SPREADSHEET)
+
+DATA = DATA.drop(DATA.columns[[0]], axis=1)
 
 
 def filter_data(input_data: pd.DataFrame = DATA, filter_query=None) -> pd.DataFrame:
@@ -40,8 +54,9 @@ def filter_data(input_data: pd.DataFrame = DATA, filter_query=None) -> pd.DataFr
                                  (input_data[filter_query['reference']] == 0)
                                  &
                                  ((input_data[filter_query['template']] == 'Abschrift')
-                                     | (input_data[filter_query['template']] == 'Original'))
-    ]
+                                  | (input_data[filter_query['template']] == 'Original'))
+                                 ]
+
 
 
     return filtered_df
@@ -65,7 +80,12 @@ def visualise_histogram(input_data: pd.DataFrame) -> None:
     # Histogram of correspondences with addressees throughout the decades.
     grouped_addressees = input_data.groupby([FILTER_QUERIES['decade'],
                                              FILTER_QUERIES['addressee']]
-                                            ).count().reset_index()
+                                            ).count()
+    # Later used for network visualisation.
+    input_data['count_per_decade'] = input_data.groupby([FILTER_QUERIES['decade'],
+                                                         FILTER_QUERIES['addressee']]
+                                                        ).count()
+    input_data.to_csv('../data/network_data.csv')
 
     colour = ["#" + ''.join([random.choice('0123456789ABCDEF') for j in range(6)])
               for i in range(len(set(grouped_addressees[FILTER_QUERIES['decade']])))
@@ -89,14 +109,4 @@ def visualise_histogram(input_data: pd.DataFrame) -> None:
 FILTERED_DF_CDS = filter_data()
 FILTERED_DF_CDS.to_csv('../data/filtered_cds_data.csv')
 
-
-# visualise_histogram(FILTERED_DF_CDS)
-
-
-def visualise_network(input_data: pd.DataFrame = FILTERED_DF_CDS) -> None:
-    """
-    Visualising network development over the decades.
-
-    :param input_data:
-    :return:
-    """
+visualise_histogram(FILTERED_DF_CDS)
