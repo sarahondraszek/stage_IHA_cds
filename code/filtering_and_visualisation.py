@@ -1,18 +1,18 @@
 import os.path
-
-import pandas as pd
-import networkx as nx
-import matplotlib.pyplot as plt
 import random
-import openpyxl
 
+import matplotlib.pyplot as plt
+import pandas as pd
 from ipynb.fs.full.merge_spreadsheets import merge_files
+import warnings
+
+from pandas.core.common import SettingWithCopyWarning
+
+warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
 
 PATH_ORIGINAL_INPUT: str = '../data/cds_sheets/*'
 PATH_MERGED_SPREADSHEET: str = '../data/merged_data/merged_cds_spreadsheet.csv'
 CDS_GND: str = 'http://d-nb.info/gnd/116765968'
-
-
 
 FILTER_QUERIES: dict = {'gnd_sender': 'GND (Verfasser)',
                         'reference': 'Verweise',
@@ -57,8 +57,6 @@ def filter_data(input_data: pd.DataFrame = DATA, filter_query=None) -> pd.DataFr
                                   | (input_data[filter_query['template']] == 'Original'))
                                  ]
 
-
-
     return filtered_df
 
 
@@ -71,6 +69,7 @@ def visualise_histogram(input_data: pd.DataFrame) -> None:
     """
     # Histogram of all correspondences throughout the decades.
     grouped_all = input_data.groupby(FILTER_QUERIES['decade']).count().reset_index()
+
     plt.bar(grouped_all[FILTER_QUERIES['decade']],
             grouped_all['FuD-Key']
             )
@@ -78,17 +77,21 @@ def visualise_histogram(input_data: pd.DataFrame) -> None:
     plt.savefig('../data/decades_freq.png')
 
     # Histogram of correspondences with addressees throughout the decades.
+    # TO-DO:
+    # - Get it working correctly so that I can make the frequencies the weights in the network.
+    # - Why does pandas' .groupby() delete duplicate rows?
     grouped_addressees = input_data.groupby([FILTER_QUERIES['decade'],
                                              FILTER_QUERIES['addressee']]
                                             ).count()
-    # Later used for network visualisation.
-    input_data['count_per_decade'] = input_data.groupby([FILTER_QUERIES['decade'],
-                                                         FILTER_QUERIES['addressee']]
-                                                        ).count()
-    input_data.to_csv('../data/network_data.csv')
+
+    input_data['Count'] = 1
+    input_data.value_counts(['Verfasser',
+                             FILTER_QUERIES['decade'],
+                             FILTER_QUERIES['addressee']]
+                            ).reset_index(name='counts').to_csv('../data/network_data.csv')
 
     colour = ["#" + ''.join([random.choice('0123456789ABCDEF') for j in range(6)])
-              for i in range(len(set(grouped_addressees[FILTER_QUERIES['decade']])))
+              for _ in range(len(set(grouped_addressees[FILTER_QUERIES['decade']])))
               ]
 
     i = 0
