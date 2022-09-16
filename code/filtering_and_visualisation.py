@@ -1,17 +1,16 @@
 import os.path
 import random
+import warnings
 
 import matplotlib.pyplot as plt
 import pandas as pd
 from ipynb.fs.full.merge_spreadsheets import merge_files
-import warnings
-
 from pandas.core.common import SettingWithCopyWarning
 
 warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
 
 PATH_ORIGINAL_INPUT: str = '../data/cds_sheets/*'
-PATH_MERGED_SPREADSHEET: str = '../data/merged_data/merged_cds_spreadsheet.csv'
+PATH_MERGED_SPREADSHEET: str = '../data/merged/merged_cds_spreadsheet.csv'
 CDS_GND: str = 'http://d-nb.info/gnd/116765968'
 
 FILTER_QUERIES: dict = {'gnd_sender': 'GND (Verfasser)',
@@ -49,13 +48,16 @@ def filter_data(input_data: pd.DataFrame = DATA, filter_query=None) -> pd.DataFr
     input_data['Verweise'] = input_data['Verweise'].fillna(0)
 
     # Filtering: Output of only letters from CdS that are originals.
-    filtered_df = input_data.loc[(input_data[filter_query['gnd_sender']] == CDS_GND)
-                                 &
-                                 (input_data[filter_query['reference']] == 0)
-                                 &
-                                 ((input_data[filter_query['template']] == 'Abschrift')
-                                  | (input_data[filter_query['template']] == 'Original'))
-                                 ]
+    filtered_df = input_data.loc[
+        (input_data[filter_query['gnd_sender']] == CDS_GND)
+        &
+        (input_data[filter_query['reference']] == 0)
+        (
+            (input_data[filter_query['template']] == 'Abschrift')
+            |
+            (input_data[filter_query['template']] == 'Original')
+        )
+    ]
 
     return filtered_df
 
@@ -70,29 +72,33 @@ def visualise_histogram(input_data: pd.DataFrame) -> None:
     # Histogram of all correspondences throughout the decades.
     grouped_all = input_data.groupby(FILTER_QUERIES['decade']).count().reset_index()
 
-    plt.bar(grouped_all[FILTER_QUERIES['decade']],
-            grouped_all['FuD-Key']
-            )
+    plt.bar(
+        grouped_all[FILTER_QUERIES['decade']],
+        grouped_all['FuD-Key']
+    )
 
-    plt.savefig('../data/decades_freq.png')
+    plt.savefig('../data/vis/decades_freq.png')
 
     # Histogram of correspondences with addressees throughout the decades.
     # TO-DO:
     # - Get it working correctly so that I can make the frequencies the weights in the network.
     # - Why does pandas' .groupby() delete duplicate rows?
-    grouped_addressees = input_data.groupby([FILTER_QUERIES['decade'],
-                                             FILTER_QUERIES['addressee']]
-                                            ).count().reset_index()
+    grouped_addressees = input_data.groupby(
+        [FILTER_QUERIES['decade'],
+         FILTER_QUERIES['addressee']]
+    ).count().reset_index()
 
     input_data['Count'] = 1
-    input_data.value_counts(['Verfasser',
-                             FILTER_QUERIES['decade'],
-                             FILTER_QUERIES['addressee']]
-                            ).reset_index(name='counts').to_csv('../data/network_data.csv')
+    input_data.value_counts(
+        ['Verfasser',
+         FILTER_QUERIES['decade'],
+         FILTER_QUERIES['addressee']]
+    ).reset_index(name='counts').to_csv('../data/retrieved/network_data.csv')
 
-    colour = ["#" + ''.join([random.choice('0123456789ABCDEF') for j in range(6)])
-              for _ in range(len(set(grouped_addressees[FILTER_QUERIES['decade']])))
-              ]
+    colour = [
+        "#" + ''.join([random.choice('0123456789ABCDEF') for j in range(6)])
+        for _ in range(len(set(grouped_addressees[FILTER_QUERIES['decade']])))
+    ]
 
     i = 0
     for decade in set(grouped_addressees[FILTER_QUERIES['decade']]):
@@ -110,6 +116,6 @@ def visualise_histogram(input_data: pd.DataFrame) -> None:
 
 
 FILTERED_DF_CDS = filter_data()
-FILTERED_DF_CDS.to_csv('../data/filtered_cds_data.csv')
+FILTERED_DF_CDS.to_csv('../data/retrieved/filtered_cds_data.csv')
 
 visualise_histogram(FILTERED_DF_CDS)
