@@ -105,7 +105,7 @@ def visualise_histogram(input_data: pd.DataFrame) -> None:
 
         plt.title(decade)
         plt.xticks(rotation='vertical')
-        plt.savefig('../data/decade_' + str(decade) + '.png', bbox_inches="tight")
+        plt.savefig('../data/vis/decade_' + str(decade) + '.png', bbox_inches="tight")
         i += 1
 
 
