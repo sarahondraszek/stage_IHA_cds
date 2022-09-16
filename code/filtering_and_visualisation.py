@@ -82,7 +82,7 @@ def visualise_histogram(input_data: pd.DataFrame) -> None:
     # - Why does pandas' .groupby() delete duplicate rows?
     grouped_addressees = input_data.groupby([FILTER_QUERIES['decade'],
                                              FILTER_QUERIES['addressee']]
-                                            ).count()
+                                            ).count().reset_index()
 
     input_data['Count'] = 1
     input_data.value_counts(['Verfasser',
