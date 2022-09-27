@@ -4,6 +4,7 @@ import warnings
 
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 from ipynb.fs.full.merge_spreadsheets import merge_files
 from pandas.core.common import SettingWithCopyWarning
 
@@ -31,7 +32,6 @@ DATA = DATA.drop(DATA.columns[[0]], axis=1)
 def filter_data(input_data: pd.DataFrame = DATA, filter_query=None) -> pd.DataFrame:
     """
     Filtering input data from merged spreadsheets according to given filter queries.
-
     :param input_data: Merged dataframe.
     :param filter_query: Query that can be used to filter the dataframe.
     :return: Filtered dataframe.
@@ -43,15 +43,16 @@ def filter_data(input_data: pd.DataFrame = DATA, filter_query=None) -> pd.DataFr
     # Adding decades to dataframe by extracting the years from the letter's dates.
     input_data['year'] = pd.DatetimeIndex(input_data['Datierung (JJJJ-MM-TT)']).year
     input_data['decade'] = (10 * (input_data['year'] // 10))
+    input_data['decade'] = input_data['decade'].astype('Int64')
 
     # Replacing NaN values with zeros for facilitated filtering.
     input_data['Verweise'] = input_data['Verweise'].fillna(0)
-
     # Filtering: Output of only letters from CdS that are originals.
     filtered_df = input_data.loc[
         (input_data[filter_query['gnd_sender']] == CDS_GND)
         &
         (input_data[filter_query['reference']] == 0)
+        &
         (
             (input_data[filter_query['template']] == 'Abschrift')
             |
@@ -65,7 +66,6 @@ def filter_data(input_data: pd.DataFrame = DATA, filter_query=None) -> pd.DataFr
 def visualise_histogram(input_data: pd.DataFrame) -> None:
     """
     Histogram of correspondence frequencies throughout the decades. Can be adapted according to visualisation goals.
-
     :param input_data:
     :return:
     """
