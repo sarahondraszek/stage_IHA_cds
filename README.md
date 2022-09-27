@@ -12,6 +12,5 @@ and reusability. The script mainly provides tools for filtering the data basis f
 ![Histogram in Excel](data/vis/histogram_freqs.png)
 ## Network
 The network is interactive and based on HTML using Plotly and Dash.
-![Interactive Visualisation of the Correspondence](../../../Downloads/graph_interactions.gif)
-
+![Interactive Network](data/vis/graph_interactions.gif)
 
