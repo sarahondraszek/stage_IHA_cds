@@ -28,4 +28,4 @@ and adjusted to my needs.
 ![Interactive Network](data/vis/graph_interactions.gif) 
 Further information will be added following the example of Semantic Web graphs.
 ## Enriching the Network with Semantic Information
-
+![](data/vis/g.png)
