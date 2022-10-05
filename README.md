@@ -29,3 +29,6 @@ and adjusted to my needs.
 Further information will be added following the example of Semantic Web graphs.
 ## Enriching the Network with Semantic Information
 ![](data/vis/g.png)
+Visualisation of current OWL ontology in Protégé.
+![](data/vis/ontograph.png)
+![](data/vis/ontograph-1.png)
