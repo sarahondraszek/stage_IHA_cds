@@ -31,4 +31,8 @@ Further information will be added following the example of Semantic Web graphs.
 ![](data/vis/g.png)
 Visualisation of current OWL ontology in Protégé.
 ![](data/vis/ontograph.png)
+Visualisation in Protégé.
 ![](data/vis/ontograph-1.png)
+After importing the finished, in XML/RDF serialised OWL file into GraphDB, it is possible to visualise
+the graph.
+![](data/vis/rdf_cds_graph.gif)
