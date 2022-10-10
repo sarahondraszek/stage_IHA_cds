@@ -27,11 +27,25 @@ Moreover, the script was inspired by the following Medium [article](https://towa
 and adjusted to my needs.
 ![Interactive Network](data/vis/graph_interactions.gif) 
 Further information will be added following the example of Semantic Web graphs.
-## Enriching the Network with Semantic Information
+## Enriching the Network with Semantic Information.
+To visualise a correspondence – an already existing corpus of connections between people who communicated with each other –
+in an ontology, can come with many advantages. Not only does Linked (Open) Data make data more findable, accessible, interoperable
+and reusable, it also brings the entire basis into a new context. Thereby, pre-existing statements, for example those about exchanged
+letters of Constance de Salm, can be seen from a new point of view. More information about people, their relationships,
+the places of expositions or the keywords used in the letters can be added.
+
+### *First steps*
+The first step of transforming this data basis into an ontology is to find and/or create a model
+that fits the data and represents the wanted information. In the Semantic Web, one of the main goals is the enrichment
+of data collections with "richer" information, meaning to enhance its expressiveness. Semantics or ``knowledge`` make such 
+bases not only more accessible to humans but also more interoperable on the web.
+Thinking of a model can be hard: Finding a fitting format, like RDF, or finding the best vocabulary to express what 
+we want to say. Hence, it can be useful to model some examples by hand. It is also absolutely necessary to *know* the data.
 ![](data/vis/g.png)
-Visualisation of current OWL ontology in Protégé.
+Here, I tried to model what I want the CdS ontology to look like. Using Lucidchart provided me with a first idea of
+what statements might be in the graph and what datatypes could be necessary.
 ![](data/vis/ontograph.png)
-Visualisation in Protégé.
+These were the first tries of modelling all information in aan OWL ontology in Protégé.
 ![](data/vis/ontograph-1.png)
 After importing the finished, in XML/RDF serialised OWL file into GraphDB, it is possible to visualise
 the graph.
