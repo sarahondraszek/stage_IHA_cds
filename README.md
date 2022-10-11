@@ -1,13 +1,27 @@
 # Repository of code and data created during my internship at the IHA/DHI Paris
 ## Introduction
 This repository is a collection of all scripts used for (pre-)processing and visualising the data from the
-Constance de Salm correspondence. It also includes the original data (CSV file) that was used plus almost 
-all visualisations as demonstrative PNG or GIFs.
+Constance de Salm correspondence. It also includes the original data (CSV and Excel files) plus result visualisations as demonstrative PNG or GIFs.
+<br>
+For more about the history and goal of the Constance de Salm correspondence, please visit the following link: [Die Korrespondenz der
+Constance de Salm (1767-1845)](https://constance-de-salm.de/).
+## Preprocessing
+General preprocessing steps that I had to apply were the transformation of Excel files into CSV to make them more
+accessible (open format vs. proprietary format) as well as merging the existing spreadsheets from new incoming data from the FuD
+and previously created files from former interns that worked on the correspondence
+(see [filtering_and_visualisation.py](./code/filtering_and_visualisation.py) and 
+[merge_spreadsheets.ipynb](./code/merge_spreadsheets.ipynb)). Moreover, I filtered the data
+according to some specifications based on some ideas that Mareike König gave me.
+These include, for example, that only the letters of the author Constance de Salm are considered.
+I also extracted and added the year and decade of each letter to the table.
+<br> 
+For some visualisation and other exports, further preprocessing was necessary (for example a unification of names). This, I
+did in the scripts of the corresponding task.
 
 ## Histograms of Correspondence Frequencies
 Some visualisations that are included are histograms of correspondences throughout the decades. In lieu
 of visualising them in Python, further steps were taken in Excel for better team-intern accessibility, readability
-and reusability. The script mainly provides tools for filtering the data basis for Excel.
+and reusability. The script mainly provides tools for [filtering](#preprocessing) the data basis for Excel.
 ![Histogram of Correspondence Frequencies](data/vis/decades_freq.png)
 This is a first try of visualising the correspondence frequencies (y-axis) throughout the decades (x-axis)
 using [matplotlib](https://matplotlib.org/). Given the fact that the visualisation did not quite fit
@@ -91,14 +105,34 @@ However, I see this 'project' as a *petit essai* of finding what tools work well
 unstructured and uncleaned data, going through the tides of a simulated artificial neural network with occasional backpropagation.
 
 #### Python and Protégé
-![](data/vis/ontograph.png)
-These were the first tries of modelling all information in aan OWL ontology in Protégé.
+In Python, using owlready2, I first cleaned and pre-processed the data as already described in [Section X](#preprocessing).
+Other than filtering the data, I also had to make some changes regarding the unification of URLs and names of people in the
+correspondence. At first, I created the ontology baseline in Protégé: I created classes, data and functional properties
+and added the required datatypes. An outline can be found in the following image.
+![](data/vis/ontology_baseline.png)
+I used a mixture of vocabulary that already exists (of course, RDF, RDF Schema and OWL, as well as [FOAF](http://xmlns.com/foaf/0.1/)
+and [Geonames](https://www.geonames.org/ontology/documentation.html)) for the classes and properties.
+Secondly, I imported the ontology into owlready2 and added the instances of 
+the different classes to it.  
+These were the first tries of modelling all information in an ontology slash knowledge graph in Protégé.
 ![](data/vis/ontograph-1.png)
-After importing the finished, in XML/RDF serialised OWL file into GraphDB, it is possible to visualise
-the graph.
+As the screenshot shows, Protégé is not the best choice for visualising huge knowledge graphs. Instead,
+I exported the file serialised in XML/RDF and uploaded it in a GraphDB repository.
+More about this in [the section about GraphDB](#3-graphdb-my-beloved-3).
 
-#### OntoRefine
+#### Little Digression: OntoRefine
+I only found OntoRefine after I have already done most of the cleaning and modeling processes with Python
+but wanted to find out more about it anyhow. The screenshot below shows that OntoRefine works just like
+OpenRefine and takes tabular data as input. It runs on a server in the browser, the data will be loaded there and
+users can then analyse, create, change or clean the data. It is also possible to connect the project in OntoRefine
+to a Wikibase. Statements in RDF can be directly driven from the data in the columns of the tabular data input.
 ![](data/vis/ontorefine_conversion.png)
-### <3 GraphDB my Beloved <3 
+### *<3 GraphDB my Beloved <3*
+
+#### Handling the data
+#### Adding statements and using SPARQL
+#### Visualisation of graphs
 
 ![](data/vis/rdf_cds_graph.gif)
+#### Export
+#### Handling
