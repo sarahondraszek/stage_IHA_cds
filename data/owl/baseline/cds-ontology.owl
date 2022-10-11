@@ -1,0 +1,282 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://constance-de-salm.de/ontology#"
+     xml:base="https://constance-de-salm.de/ontology"
+     xmlns:gn="https://www.geonames.org/ontology#"
+     xmlns:cds="https://constance-de-salm.de/ontology#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:gndo="http://d-nb.info/gnd/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="https://constance-de-salm.de/ontology"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#has_addressee -->
+
+    <owl:ObjectProperty rdf:about="https://constance-de-salm.de/ontology#has_addressee">
+        <owl:inverseOf rdf:resource="https://constance-de-salm.de/ontology#received_letter"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="https://constance-de-salm.de/ontology#Letter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#has_first_line -->
+
+    <owl:ObjectProperty rdf:about="https://constance-de-salm.de/ontology#has_first_line">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://constance-de-salm.de/ontology#Letter"/>
+        <rdfs:range rdf:resource="https://constance-de-salm.de/ontology#First_Line"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#has_place_of_exposition -->
+
+    <owl:ObjectProperty rdf:about="https://constance-de-salm.de/ontology#has_place_of_exposition">
+        <rdfs:domain rdf:resource="https://constance-de-salm.de/ontology#Letter"/>
+        <rdfs:range rdf:resource="https://www.geonames.org/ontology#Feature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#has_sender -->
+
+    <owl:ObjectProperty rdf:about="https://constance-de-salm.de/ontology#has_sender">
+        <owl:inverseOf rdf:resource="https://constance-de-salm.de/ontology#sent_letter"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="https://constance-de-salm.de/ontology#Letter"/>
+        <rdfs:range rdf:resource="https://constance-de-salm.de/ontology#Sender"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#has_topic -->
+
+    <owl:ObjectProperty rdf:about="https://constance-de-salm.de/ontology#has_topic">
+        <rdfs:domain rdf:resource="https://constance-de-salm.de/ontology#Letter"/>
+        <rdfs:range rdf:resource="https://constance-de-salm.de/ontology#Topic"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#received_letter -->
+
+    <owl:ObjectProperty rdf:about="https://constance-de-salm.de/ontology#received_letter">
+        <rdfs:range rdf:resource="https://constance-de-salm.de/ontology#Letter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#sent_letter -->
+
+    <owl:ObjectProperty rdf:about="https://constance-de-salm.de/ontology#sent_letter">
+        <rdfs:domain rdf:resource="https://constance-de-salm.de/ontology#Sender"/>
+        <rdfs:range rdf:resource="https://constance-de-salm.de/ontology#Letter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#lat -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#lat">
+        <rdfs:domain rdf:resource="https://www.geonames.org/ontology#Feature"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#long -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#long">
+        <rdfs:domain rdf:resource="https://www.geonames.org/ontology#Feature"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/name -->
+
+    <owl:DatatypeProperty rdf:about="http://xmlns.com/foaf/0.1/name">
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/topic -->
+
+    <owl:DatatypeProperty rdf:about="http://xmlns.com/foaf/0.1/topic">
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#fud_key -->
+
+    <owl:DatatypeProperty rdf:about="https://constance-de-salm.de/ontology#fud_key">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://constance-de-salm.de/ontology#Letter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#has_date -->
+
+    <owl:DatatypeProperty rdf:about="https://constance-de-salm.de/ontology#has_date">
+        <rdfs:domain rdf:resource="https://constance-de-salm.de/ontology#Letter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#has_decade -->
+
+    <owl:DatatypeProperty rdf:about="https://constance-de-salm.de/ontology#has_decade">
+        <rdfs:domain rdf:resource="https://constance-de-salm.de/ontology#Letter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#has_gnd -->
+
+    <owl:DatatypeProperty rdf:about="https://constance-de-salm.de/ontology#has_gnd">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#has_nr -->
+
+    <owl:DatatypeProperty rdf:about="https://constance-de-salm.de/ontology#has_nr">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://constance-de-salm.de/ontology#Letter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#has_viaf -->
+
+    <owl:DatatypeProperty rdf:about="https://constance-de-salm.de/ontology#has_viaf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#has_wikidata -->
+
+    <owl:DatatypeProperty rdf:about="https://constance-de-salm.de/ontology#has_wikidata">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#has_year -->
+
+    <owl:DatatypeProperty rdf:about="https://constance-de-salm.de/ontology#has_year">
+        <rdfs:domain rdf:resource="https://constance-de-salm.de/ontology#Letter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Document -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Document"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Person -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person"/>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#Addressee -->
+
+    <owl:Class rdf:about="https://constance-de-salm.de/ontology#Addressee">
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </owl:Class>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#First_Line -->
+
+    <owl:Class rdf:about="https://constance-de-salm.de/ontology#First_Line"/>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#Letter -->
+
+    <owl:Class rdf:about="https://constance-de-salm.de/ontology#Letter">
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    </owl:Class>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#Sender -->
+
+    <owl:Class rdf:about="https://constance-de-salm.de/ontology#Sender">
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </owl:Class>
+    
+
+
+    <!-- https://constance-de-salm.de/ontology#Topic -->
+
+    <owl:Class rdf:about="https://constance-de-salm.de/ontology#Topic"/>
+    
+
+
+    <!-- https://www.geonames.org/ontology#Feature -->
+
+    <owl:Class rdf:about="https://www.geonames.org/ontology#Feature"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

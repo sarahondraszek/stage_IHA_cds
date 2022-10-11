@@ -1,4 +1,4 @@
-# Repository of code and data created during my internship at the IHA/DHI Paris
+# Visualising the CirCONSTANCEs – Repository of code and data created during my internship at the IHA/DHI Paris
 ## Introduction
 This repository is a collection of all scripts used for (pre-)processing and visualising the data from the
 Constance de Salm correspondence. It also includes the original data (CSV and Excel files) plus result visualisations as demonstrative PNG or GIFs.
@@ -131,8 +131,8 @@ to a Wikibase. Statements in RDF can be directly driven from the data in the col
 
 #### Handling the data
 #### Adding statements and using SPARQL
+![](data/vis/sparql.png)
 #### Visualisation of graphs
-
 ![](data/vis/rdf_cds_graph.gif)
 #### Export
 #### Handling
