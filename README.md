@@ -21,12 +21,12 @@ did in the scripts of the corresponding task.
 ## Histograms of Correspondence Frequencies
 Some visualisations that are included are histograms of correspondences throughout the decades. In lieu
 of visualising them in Python, further steps were taken in Excel for better team-intern accessibility, readability
-and reusability. The script mainly provides tools for [filtering](#preprocessing) the data basis for Excel.
+and reusability. The script mainly provides tools for [filtering](#preprocessing) the data basis for Excel. <br>
 ![Histogram of Correspondence Frequencies](data/vis/decades_freq.png)
 This is a first try of visualising the correspondence frequencies (y-axis) throughout the decades (x-axis)
 using [matplotlib](https://matplotlib.org/). Given the fact that the visualisation did not quite fit
 the initial expectations plus the rather complicate handling, I decided to only use Python in this step to retrieve
-the filtered data from the CSV and import it into Excel.
+the filtered data from the CSV and import it into Excel. <br>
 ![Histogram in Excel](data/vis/histogram_freqs.png)
 As can be seen in this visualisation, in Excel, I was able to filter the frequencies not only by decades but also by
 the people with whom Constance de Salm corresponded. The visualisation is interactive due to Excel's integrated filtering tool

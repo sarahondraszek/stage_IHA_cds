@@ -1,0 +1,9 @@
+{
+    "preset_queries": {
+        "comment": "Preset Queries that can be used for querying the graph.",
+		"queries": {
+            "person": "CONSTRUCT { ?letter cds:has_sender ?sender; cds:has_addressee ?addressee; cds:has_place_of_exposition ?place; cds:has_topic ?topic. ?sender rdfs:label ?sender_label.    ?addresse rdfs:label ?addressee_label.} WHERE {     ?letter cds:has_sender ?sender;              cds:has_addressee ?addressee;      \t\tcds:has_place_of_exposition ?place;            cds:has_topic ?topic.    ?sender rdfs:label ?sender_label.    ?addresse rdfs:label ?addressee_label.    FILTER(\"Louis-Benoît Picard\"@en = ?sender_label || \"Louis-Benoît Picard\"@en = ?addressee_label ).}   ",
+            "topic": "CONSTRUCT { ?letter cds:has_sender ?sender; cds:has_addressee ?addressee; cds:has_place_of_exposition ?place; cds:has_topic ?topic. ?topic rdfs:label ?topic_label. } WHERE {      ?letter cds:has_sender ?sender;               cds:has_addressee ?addressee;       \t\tcds:has_place_of_exposition ?place;             cds:has_topic ?topic.     ?topic rdfs:label ?topic_label.     FILTER(\"Wohnen\"@en = ?topic_label). }   "
+        }
+    }
+}
