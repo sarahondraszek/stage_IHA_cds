@@ -105,12 +105,12 @@ However, I see this 'project' as a *petit essai* of finding what tools work well
 unstructured and uncleaned data, going through the tides of a simulated artificial neural network with occasional backpropagation.
 
 #### Python and Protégé
-In Python, using owlready2, I first cleaned and pre-processed the data as already described in [Section X](#preprocessing).
+In Python, using owlready2, I first cleaned and preprocessed the data as already described in [the corresponding section](#preprocessing).
 Other than filtering the data, I also had to make some changes regarding the unification of URLs and names of people in the
-correspondence. At first, I created the ontology baseline in Protégé: I created classes, data and functional properties
+correspondence. This is further explained in [this section](#handling-the-data--enrichment-with-openrefine). At first, I created the ontology baseline in Protégé: I created classes, data and functional properties
 and added the required datatypes. An outline can be found in the following image.
 ![](data/vis/ontology_baseline.png)
-I used a mixture of vocabulary that already exists (of course, RDF, RDF Schema and OWL, as well as [FOAF](http://xmlns.com/foaf/0.1/)
+I used a mixture of vocabulary that already exists (of course, RDF, RDF Schema and OWL, as well as [FOAF](http://xmlns.com/foaf/0.1/), [DBO](https://www.dbpedia.org/about/)
 and [Geonames](https://www.geonames.org/ontology/documentation.html)) for the classes and properties.
 Secondly, I imported the ontology into owlready2 and added the instances of 
 the different classes to it.  
@@ -121,18 +121,44 @@ I exported the file serialised in XML/RDF and uploaded it in a GraphDB repositor
 More about this in [the section about GraphDB](#3-graphdb-my-beloved-3).
 
 #### Little Digression: OntoRefine
-I only found OntoRefine after I have already done most of the cleaning and modeling processes with Python
+I only found [OntoRefine](https://graphdb.ontotext.com/documentation/9.8/free/loading-data-using-ontorefine.html) after I have already done most of the cleaning and modeling processes with Python
 but wanted to find out more about it anyhow. The screenshot below shows that OntoRefine works just like
-OpenRefine and takes tabular data as input. It runs on a server in the browser, the data will be loaded there and
+[OpenRefine](https://openrefine.org/) and takes tabular data as input. It runs on a server in the browser, the data will be loaded there and
 users can then analyse, create, change or clean the data. It is also possible to connect the project in OntoRefine
 to a Wikibase. Statements in RDF can be directly driven from the data in the columns of the tabular data input.
 ![](data/vis/ontorefine_conversion.png)
 ### *<3 GraphDB my Beloved <3*
 
-#### Handling the data
-#### Adding statements and using SPARQL
+#### Handling the Data – Enrichment with OpenRefine
+Given the state of the data, with names that are in different languages, some people who lack identifiers (GND, VIAF or the like)
+and other similar problems, creating a knowledge graph was not as simple as I previously estimated. So, instead of doing most 
+of the enrichment and cleaning via Python and GraphDB, I was advised to take a short dip into OpenRefine
+to get a cleaner data basis. This is an inevitable step to be able to retrieve data from extern collections of data – so, 
+to do reconciliation – and add it to the existing ontology.
+![](data/vis/openrefine.png)
+By using the methods offered by OpenRefine, I could both reconcile further knowledge about the people in the correspondence
+and do a unification of the names that were already given. 
+
+* What were the problems that led me to this solution?
+  * The names were given in different languages and could therefore not be found under the same language label on Wikidata
+  * Some names had additional information added to them in parentheses, this led to the same problem as mentioned above
+* Why is this useful?
+  * Names can be unified in multiple columns at the same time
+  * Reconciliation can be done using more than just one service at a time, e.g. Wikidata, GND or VIAF
+* And now?
+  * Now that the data basis provides (a little more) uniformity AND some enriched data, it can be exported and added into GraphDB one again
+#### An Alternative: Adding Statements Using SPARQL
+Alternatively, if the data is already in a relatively unified state, adding statements and reconciliating
+information could also be done by using SPARQL queries (in GraphDB). This is also what I first tried to do, searching for 
+the names that are given in the correspondence as labels in Wikidata and thereby getting additional information for the graph.
+This worked for only those whose name was exactly the same as the label provided by Wikidata and ONLY if the language tag also corresponded
+to the language in which the label is given – stuff that researchers would have to look up manually and which renders the automation
+of this process almost superfluous.
 ![](data/vis/sparql.png)
+Nevertheless, I tried adding the statements about Constance de Salm given by Wikidata to my knowledge graph. The SPARQL Query & Update
+tab in GraphDB makes this extremely easy and comprehensible. 
 #### Visualisation of graphs
+In GraphDB, graphs / ontologies can be easily visualised and interacted with within the server. 
 ![](data/vis/rdf_cds_graph.gif)
 #### Export
-#### Handling
+#### Interactive Visualisation of a Knowledge Graph

@@ -102,6 +102,14 @@
     
 
 
+    <!-- http://dbpedia.org/ontology/alias -->
+
+    <owl:DatatypeProperty rdf:about="http://dbpedia.org/ontology/alias">
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.w3.org/2003/01/geo/wgs84_pos#lat -->
 
     <owl:DatatypeProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#lat">
