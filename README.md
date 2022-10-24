@@ -145,6 +145,8 @@ and do a unification of the names that were already given.
 * Why is this useful?
   * Names can be unified in multiple columns at the same time
   * Reconciliation can be done using more than just one service at a time, e.g. Wikidata, GND or VIAF
+  * Errors that remained hidden can be uncovered: Even if most of the processes are supposed to be automated, unfortunately, a manual postcorrection is inevitable. With further reconciled information, I could not only unify names but also detect some identifiers that were not correctly chosen. For example, for one person, the GND entry of a highschool was given instead of the correct link to the person.
+![](data/vis/errors_in_data_basis.png)
 * And now?
   * Now that the data basis provides (a little more) uniformity AND some enriched data, it can be exported and added into GraphDB one again
 #### An Alternative: Adding Statements Using SPARQL
@@ -157,8 +159,17 @@ of this process almost superfluous.
 ![](data/vis/sparql.png)
 Nevertheless, I tried adding the statements about Constance de Salm given by Wikidata to my knowledge graph. The SPARQL Query & Update
 tab in GraphDB makes this extremely easy and comprehensible. 
-#### Visualisation of graphs
+#### Export and Visualisation of Graphs
 In GraphDB, graphs / ontologies can be easily visualised and interacted with within the server. 
 ![](data/vis/rdf_cds_graph.gif)
-#### Export
-#### Interactive Visualisation of a Knowledge Graph
+But why was all the preprocessing worth it?
+Additional data can be reconciled from extern resources AND multiple names can be used for doing so because
+the property "alias" now can be used as a look-up table if a label could not be found in an extern database. However,
+some people in the correspondence are still not identified – meaning they only have an ontology-specific identifier. As already mentioned 
+in the previous section, this underlines the necessity of manual postcorrection.
+![](data/vis/alias.png)
+Nevertheless, by using SPARQL (as described in [this section](#an-alternative-adding-statements-using-sparql)) in GraphDB,
+statements can now be added via querying. 
+This already shows a feature I would like to add later on:
+Using SPARQL to query information that is not explicitly given in the graph YET.
+#### Interactive Visualisation of Knowledge Graphs
