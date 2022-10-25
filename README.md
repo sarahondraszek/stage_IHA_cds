@@ -166,10 +166,14 @@ But why was all the preprocessing worth it?
 Additional data can be reconciled from extern resources AND multiple names can be used for doing so because
 the property "alias" now can be used as a look-up table if a label could not be found in an extern database. However,
 some people in the correspondence are still not identified – meaning they only have an ontology-specific identifier. As already mentioned 
-in the previous section, this underlines the necessity of manual postcorrection.
-![](data/vis/alias.png)
+in the previous section, this underlines the necessity of manual postcorrection. <br>
+<img src="data/vis/alias.png" alt="drawing" width="200"/> <br>
 Nevertheless, by using SPARQL (as described in [this section](#an-alternative-adding-statements-using-sparql)) in GraphDB,
 statements can now be added via querying. 
 This already shows a feature I would like to add later on:
 Using SPARQL to query information that is not explicitly given in the graph YET.
 #### Interactive Visualisation of Knowledge Graphs
+The ultimate goal of this little project is to create a website on which users can access the network of the correspondence
+and filter it using either SPARQL queries or other tools (decade slider or text input).
+<img src="data/vis/Constance-de-Salm_Website.png" alt="drawing" width="600"/>
+
