@@ -5,7 +5,7 @@ Constance de Salm correspondence. It also includes the original data (CSV and Ex
 <br>
 For more about the history and goal of the Constance de Salm correspondence, please visit the following link: [Die Korrespondenz der
 Constance de Salm (1767-1845)](https://constance-de-salm.de/). All required modules and brief descriptions of the scripts can be found
-in the [FILE OVERVIEW](./code/FILE_OVERVIEW.md).
+in the [FILE OVERVIEW](./code/README.md).
 ## Preprocessing
 General preprocessing steps that I had to apply were the transformation of Excel files into CSV to make them more
 accessible (open format vs. proprietary format) as well as merging the existing spreadsheets from new incoming data from the FuD
