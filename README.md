@@ -1,10 +1,11 @@
-# Visualising the CirCONSTANCEs – Repository of code and data created during my internship at the IHA/DHI Paris
+# Visualising the CirCONSTANCEs – Repository of Code and Data Created During My Internship at the IHA/DHI Paris
 ## Introduction
 This repository is a collection of all scripts used for (pre-)processing and visualising the data from the
 Constance de Salm correspondence. It also includes the original data (CSV and Excel files) plus result visualisations as demonstrative PNG or GIFs.
 <br>
 For more about the history and goal of the Constance de Salm correspondence, please visit the following link: [Die Korrespondenz der
-Constance de Salm (1767-1845)](https://constance-de-salm.de/).
+Constance de Salm (1767-1845)](https://constance-de-salm.de/). All required modules and brief descriptions of the scripts can be found
+in the [FILE OVERVIEW](./code/FILE_OVERVIEW.md).
 ## Preprocessing
 General preprocessing steps that I had to apply were the transformation of Excel files into CSV to make them more
 accessible (open format vs. proprietary format) as well as merging the existing spreadsheets from new incoming data from the FuD
@@ -167,13 +168,13 @@ Additional data can be reconciled from extern resources AND multiple names can b
 the property "alias" now can be used as a look-up table if a label could not be found in an extern database. However,
 some people in the correspondence are still not identified – meaning they only have an ontology-specific identifier. As already mentioned 
 in the previous section, this underlines the necessity of manual postcorrection. <br>
-<img src="data/vis/alias.png" alt="drawing" width="200"/> <br>
 Nevertheless, by using SPARQL (as described in [this section](#an-alternative-adding-statements-using-sparql)) in GraphDB,
 statements can now be added via querying. 
 This already shows a feature I would like to add later on:
 Using SPARQL to query information that is not explicitly given in the graph YET.
 #### Interactive Visualisation of Knowledge Graphs
 The ultimate goal of this little project is to create a website on which users can access the network of the correspondence
-and filter it using either SPARQL queries or other tools (decade slider or text input).
-<img src="data/vis/Constance-de-Salm_Website.png" alt="drawing" width="600"/>
-
+and filter it using either SPARQL queries or other tools (decade slider or text input). An exemplary view
+of the application on the website can be seen in the following image.
+![](data/vis/Constance-de-Salm_Website.png)
+However, since the time of my internship did not suffice to complete it, this step will stay incomplete until further notice.
