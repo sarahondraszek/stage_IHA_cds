@@ -70,7 +70,7 @@ bases not only more accessible to humans but also more interoperable on the web.
 
 Thinking of a model can be hard: What do I want my model to express? <br>
 Hence, it can be useful to model some examples by hand, like I did in the following screenshot:
-![data_vis](data/vis/g.png)
+![](data/vis/g.png)
 Here, I tried to model what I want the CdS ontology to look like. Implementing a simple, basic model in [Lucidchart](https://www.lucidchart.com/) provided me with a first idea of
 what statements might be in the graph and what datatypes could be necessary. An ontology, other than a knowledge graph,
 models more abstractly, setting relationships between classes, domains and ranges of properties or datatype rules.
