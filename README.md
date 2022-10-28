@@ -12,12 +12,12 @@ accessible (open format vs. proprietary format) as well as merging the existing 
 and previously created files from former interns that worked on the correspondence
 (see [filtering_and_visualisation.py](./code/filtering_and_visualisation.py) and 
 [merge_spreadsheets.ipynb](./code/merge_spreadsheets.ipynb)). Moreover, I filtered the data
-according to some specifications based on some ideas that Mareike König gave me.
-These include, for example, that only the letters of the author Constance de Salm are considered.
+according to some specifications based on some ideas that Dr. Mareike König gave me:
+* only letters with Constance de Salm as sender are considered
+* only letters that are originals (no copies)
 I also extracted and added the year and decade of each letter to the table.
 <br> 
-For some visualisation and other exports, further preprocessing was necessary (for example a unification of names). This, I
-did in the scripts of the corresponding task.
+For the export and afterwards, the visualisation, further preprocessing was necessary (for example a unification of names).
 
 ## Histograms of Correspondence Frequencies
 Some visualisations that are included are histograms of correspondences throughout the decades. In lieu
@@ -32,6 +32,7 @@ the filtered data from the CSV and import it into Excel. <br>
 As can be seen in this visualisation, in Excel, I was able to filter the frequencies not only by decades but also by
 the people with whom Constance de Salm corresponded. The visualisation is interactive due to Excel's integrated filtering tool
 and can be read modified even without further technological expertise.
+
 ## Network of Constance de Salm's Correspondence
 Firstly, I wanted to create a network that allows a user to interact with it and that has filters that can be modified
 and applied to the data. Pre-existing tool like Gephi or Cytoscape both do not include filtering techniques for graph data
