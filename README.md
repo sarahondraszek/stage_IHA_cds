@@ -79,7 +79,7 @@ models more abstractly, setting relationships between classes, domains and range
 specifically, in ontology, we have categories, properties and relationships
 between the concepts, data and entities. Similarly, in Knowledge Graphs, we
 have subgraphs, properties, relationships, data and vertices (nodes). However,
-there is a fundamental dierence between them. A Knowledge Graph is a
+there is a fundamental difference between them. A Knowledge Graph is a
 representation of knowledge in a graph form, which very often derives from a
 graph database (GDB) - a database that stores data by using a graph
 architecture. A Knowledge Graph and its database structure are focused on the
