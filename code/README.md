@@ -24,7 +24,7 @@ and edges of a graph in an interactive environment.
 ### Ontologies, RDFification, Semantic Modelling
 The scripts [semantic_modelling_with_owlready](semantic_modelling_with_owlready.ipynb) [enriching_database](enriching_database.ipynb) 
 and [interactive_RDF](interactive_RDF.ipynb) revolve around the topic of ontologies and the Semantic Web.
-However, the last to are rather experimental – `enriching_database` is a framework that portrays how information
+However, the last two are rather experimental – `enriching_database` is a framework that portrays how information
 could be added to the data using SPARQL queries and `interactive_RDF` is the approach to the visualisation mentioned in the
 last section of the [README](../README.md#interactive-visualisation-of-knowledge-graphs).
 
